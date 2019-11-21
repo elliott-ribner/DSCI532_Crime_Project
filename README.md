@@ -1,1 +1,3 @@
-# DSCI532_Crime_Project
+# DSCI_532_Crime_Project
+
+SKEC rocks!
