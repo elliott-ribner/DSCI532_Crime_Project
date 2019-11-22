@@ -2,7 +2,7 @@
 title: "Proposal- Vancouver Crime Tracker"
 author: "Chimaobi Amadi, Elliott Ribner, Shivam Verma, Xugang Zhong(Kirk)"
 date: "22/11/2019"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}

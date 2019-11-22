@@ -1,4 +1,4 @@
-Vancouver Crime Tracker Proposal
+Proposal- Vancouver Crime Tracker
 ================
 Chimaobi Amadi, Elliott Ribner, Shivam Verma, Xugang Zhong(Kirk)
 22/11/2019
@@ -25,10 +25,19 @@ made.
 
 ### Variable Description
 
-|   | `*join(Superheroes, Publishers)`      | `*join(Publishers, Superheroes)`      |
-| - | ------------------------------------- | ------------------------------------- |
-| 1 | `inner_join(superheroes, publishers)` | `inner_join(publishers, superheroes)` |
-| 2 | `semi_join(superheroes, publishers)`  | `semi_join(publishers, superheroes)`  |
+| S No. | Variable | Description | Insight |
+| ----------- | ----------- | ----------- | ----------- |
+| 1 | TYPE | Type of crime reported | The most common type of crime is `Theft from Vehicle`, `Mischief` & `Break and Enter Residential/Other` |
+| 2 | YEAR | Year of crime reported | Number of crime occurrences reduced from 2003 to 2011 after which it started increasing. In 2018 the number of crimes was the same as in 2007 |
+| 3 | MONTH | Month of crime reported | There is no significant difference in the number of crimes by month |
+| 4 | DAY | Day of the month when the crime was reported | There is no significant difference in the number of crimes by day of month |
+| 5 | HOUR | Hour of crime reported | Most of the crimes happen between 5 PM and midnight. Past midnight there are fewer occurrences |
+| 6 | NEIGHBOURHOOD | Neighbourhood of crime reported | The data is for 24 neighborhoods in Vancouver. 10.42% of the crimes had no neighborhood associated with it. Even though the neighbourhood is missing for some records, the crime did happen. Therefore, neither imputing the data nor excluding those records as it describes other relevant information. |
+| 7 | X | X-coordinate of the location | Longitude |
+| 8 | Y | Y-coordinate of the location | Latitude |
+| 9 | HUNDRED_BLOCK | Generalized location of Crime Activity | Not using |
+| 10 | MINUTE | Hour of crime reported | Not using |
+
 
 ## Research questions and usage scenarios
 
@@ -68,8 +77,8 @@ composition of crimes (Chart 4) as well.
 
 -----
 
-![Sketch](sketch.png "Crime Information by Vancouver Neighbourhood")
+![Sketch](https://raw.githubusercontent.com/vermashivam679/DSCI_532_Group114_SKEC/master/Img/sketch.png "Crime Information by Vancouver Neighbourhood")
 
 ### Add description of the App
 
-##### END\!
+##### END!
