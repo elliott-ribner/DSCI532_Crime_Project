@@ -9,7 +9,7 @@ We strive to complete the assigned tasks to the best of our abilities. We all sh
 - We will attend the team meetings.
 - We will meet meet our individual deadlines as determined by the team
 - We will stay in communication through slack, with an expectation to respond to questions within 24 hours.
-- We will complete our own work, and provide proper citations when necessary
+- We will complete our own work, and provide proper citations when necessary.
 - We will create an inclusive atmosphere and respect our differences in backgrounds.
 
 ### The following will not be tolerated:
