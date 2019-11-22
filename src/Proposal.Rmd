@@ -62,7 +62,7 @@ The filtered data is molded to show the crime occurrences by Month-of-Year (*Cha
 
 -------------------------------------------------------------------------------------------------------
 
-![Sketch](sketch.png "Crime Information by Vancouver Neighbourhood")
+![Sketch](https://raw.githubusercontent.com/vermashivam679/DSCI_532_Group114_SKEC/master/Img/sketch.png "Crime Information by Vancouver Neighbourhood")
 
 ### Add description of the App
 
