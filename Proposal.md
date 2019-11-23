@@ -7,6 +7,12 @@ Chimaobi Amadi, Elliott Ribner, Shivam Verma, Xugang Zhong(Kirk)
 
 -----
 
+Living in a neighbourhood with high rate of crime could potentially be a traumatizing experience, even more terrible for school children exposed to neighborhood full of crime and violence. For school children, such environment can result in hard time learning, difficulty to focus, additional stress and depression. Violent crimes are usually geographically concentrated in some particular neighborhoods, and often called `hot spots` in some localized places. If these `hot spots` are well known, the public can make well-informed proactive decisions about living in such areas. Additionally, problem-oriented policing efforts in and around the hot spots can be improved.
+
+We therefore propose to solve this problem by creating an interactive dashboard which is capable of providing crime statistics and awareness, thereby helping the public make better decisions, and assist Vancouver Police Department raise awareness on the crime rates in Vancouver neighbourhoods.  It also has the ability to compare neighborhoods based on overall historic rates for crimes which include: Break and Enter, Homicide, Mischief, Offence Against a Person, Theft from Vehicle, Theft of Bicycle, Theft of Vehicle, Vehicle Collision or Pedestrian Struck (with Fatality),  and Vehicle Collision or Pedestrian Struck.
+
+-----
+
 ## Description of the Data
 
 -----
