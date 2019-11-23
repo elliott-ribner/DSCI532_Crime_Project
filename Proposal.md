@@ -84,12 +84,12 @@ well.
 -----
 <<<<<<< HEAD
 ### Design 1
-![Sketch](https://raw.githubusercontent.com/vermashivam679/DSCI_532_Group114_SKEC/master/Img/sketch.png "Crime Information by Vancouver Neighbourhood")
+![Sketch](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Img/sketch.png?raw=true "Crime Information by Vancouver Neighbourhood")
 
 ### Design 2
-![Sketch1](https://github.com/chuusan/DSCI_532_Group114_SKEC/blob/master/Img/sketch1.png)
+![Sketch1](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Img/sketch1.png?raw=true)
 
-![Sketch2](https://github.com/chuusan/DSCI_532_Group114_SKEC/blob/master/Img/sketch2.png)
+![Sketch2](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Img/sketch2.png?raw=true)
 ### Add description of the App
 =======
 
