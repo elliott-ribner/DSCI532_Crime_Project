@@ -90,9 +90,7 @@ well.
 ![Sketch1](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Img/sketch1.png?raw=true)
 
 ![Sketch2](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Img/sketch2.png?raw=true)
-### Add description of the App
 
------
 ### App Desciription
 
 -----
