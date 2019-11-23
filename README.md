@@ -1,22 +1,21 @@
-## Introduction
+DSCI_532_Group114_SKEC_Vancouver_Crime_Tracker
+================
+Chimaobi Amadi, Elliott Ribner, Shivam Verma, Xugang Zhong(Kirk)
 
-## Data Collection & Cleaning
------**Need to be updated**
-- data collection and cleaning is completed within the ./data folder
-- within this folder, the code that harvest the data from the appropriate web-sites is available, along with data cleaning, and merging of the two data sets (GDP and Educational Data) by common country code labels.
-- this summary can be found here : https://github.com/bici-sancta/gdp_worldbank/blob/master/data/gather/read_clean_data.md
+## App Description & Rough Sketch
+This repository is to demonstrate an interactive visualizations app developed on the [data](https://geodash.vpd.ca/opendata/) provided by the Vancouver Police Department (VPD). Our aim is to help spread awareness about Crimes in Vancouver and facilitate transparency of policing activity. Please have a look at the documents listed below to get into more details. We welcome improvements from anyone willing to contribute to our app to make it better. Also, please find below a rough sketch of the application for a quick walkthrough.  
 
-
-## Overview of Content
+![Sketch](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Img/sketch.png?raw=true "Crime Information by Vancouver Neighbourhood")
 
 
+## Key Documents:
+	[App Proposal](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Proposal.md)  
+	[Code of Conduct (CoC)](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/CODE_OF_CONDUCT.md)  
+	[Contributing](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Contributing.md)    
+	[License](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/LICENSE)  
 
-## Summary Presentation
+## Folder Structure:
+	`Data`: contains all raw data for the dashboard
+	`Img`: contains saved images and plots
+	`src`: contains all code files used to wrangle the data, create plots, and make the dashboard
 
-## License
-
-**Add brief info of the liecence, copy from somewhere esle and paraphrase it**
-
-## Dependencies
-
-## Contribution
