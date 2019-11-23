@@ -8,9 +8,9 @@ Chimaobi Amadi, Elliott Ribner, Shivam Verma, Xugang Zhong(Kirk)
 
 -----
 
-Living in a neighbourhood with high rates of crime could potentially be a traumatizing experience, this is especially true for school children exposed to a neighborhood full of crime and violence. For school children, such environments can result in difficulty learning, difficulty to focus, and additional stress and depression. Violent crimes are usually geographically concentrated in some particular neighborhoods, and often called `hot spots` in some localized places. If these `hot spots` are well known, the public can make well-informed proactive decisions about living in such areas. Additionally, problem-oriented policing efforts in and around the hot spots can be improved.
+Living in a neighborhood with high rates of crime could potentially be a traumatizing experience, this is especially true for school children exposed to a neighborhood full of crime and violence. For school children, such environments can result in difficulty learning, difficulty to focus, and additional stress and depression. Violent crimes are usually geographically concentrated in some particular neighborhoods, and often called `hot spots` in some localized places. If these `hot spots` are well known, the public can make well-informed proactive decisions about living in such areas. Additionally, problem-oriented policing efforts in and around the hot spots can be improved.
 
-We therefore propose to solve this problem by creating an interactive dashboard which is capable of providing crime statistics and awareness. This will help the public make better decisions, and assist Vancouver Police Department to raise awareness on the crime rates in Vancouver neighbourhoods.  Also, it provides the ability to compare neighborhoods based on overall historic rates for crimes which include: Break and Enter, Homicide, Mischief, Offence Against a Person, Theft from Vehicle, Theft of Bicycle, Theft of Vehicle, Vehicle Collision or Pedestrian Struck (with Fatality), and Vehicle Collision or Pedestrian Struck.
+We, therefore, propose to solve this problem by creating an interactive dashboard that is capable of providing crime statistics and awareness. This will help the public make better decisions, and assist the Vancouver Police Department to raise awareness on the crime rates in Vancouver neighborhoods.  Also, it provides the ability to compare neighborhoods based on overall historic rates for crimes which include: Break and Enter, Homicide, Mischief, Offence Against a Person, Theft from Vehicle, Theft of Bicycle, Theft of Vehicle, Vehicle Collision or Pedestrian Struck (with Fatality), and Vehicle Collision or Pedestrian Struck.
 
 
 
@@ -49,25 +49,25 @@ made.
 
 -----
 
-Peter and his family plans to relocate to Canada. As a result of the
-favourable weather condition in Vancouver, they decide to settle in
+Peter and his family plan to relocate to Canada. As a result of the
+favorable weather condition in Vancouver, they decide to settle in
 Vancouver. Their first goal is to find accommodation: renting and
-eventually owning a house in a safe neighbourhood, as well as safety for
-their kids especially at school. The family does not know anyone in
+eventually owning a house in a safe neighborhood, as well as safety for
+their kids, especially at school. The family does not know anyone in
 Vancouver and relies on a reliable source of information regarding the
-crime situation and trend in each of the neighbourhoods in Vancouver.
+crime situation and trend in each of the neighborhoods in Vancouver.
 
-There are many people like Peter and his family; and to help solve their
+There are many people like Peter and his family, and to help solve their
 problem, we plan on creating an interactive app that has the capability
 of displaying crime information at a glance. The secondary motivation
-for this app is answer general crime trends in Vancouver and create
-awareness about crime rates per neighbourhood and need for drastic
+for this app is to answer general crime trends in Vancouver and create
+awareness about crime rates per neighborhood and need for drastic
 intervention.
 
 Using the dataset provided by the Vancouver Police Department (VPD), we
 will build an interactive dashboard with the historic crime situation in
 the city from 2003 to 2019. There are 3 filters provided in the
-dashboard which includes the neighborhood, type of crime and the period
+dashboard which include the neighborhood, type of crime and the period
 in years. The filter option streamlines the visualization and produces
 charts that answer the questions.
 
