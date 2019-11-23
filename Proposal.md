@@ -87,9 +87,9 @@ well.
 ![Sketch](https://raw.githubusercontent.com/vermashivam679/DSCI_532_Group114_SKEC/master/Img/sketch.png "Crime Information by Vancouver Neighbourhood")
 
 ### Design 2
-![Sketch1](https://github.com/chuusan/DSCI_532_Group114_SKEC/blob/master/Img/sketch2.png)
+![Sketch1](https://github.com/chuusan/DSCI_532_Group114_SKEC/blob/master/Img/sketch1.png)
 
-![Sketch2](https://github.com/chuusan/DSCI_532_Group114_SKEC/blob/master/Img/sketch3.png)
+![Sketch2](https://github.com/chuusan/DSCI_532_Group114_SKEC/blob/master/Img/sketch2.png)
 ### Add description of the App
 =======
 
