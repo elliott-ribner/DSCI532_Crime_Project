@@ -80,7 +80,7 @@ composition of crimes (Chart 4) as well.
 ![Sketch](https://raw.githubusercontent.com/vermashivam679/DSCI_532_Group114_SKEC/master/Img/sketch.png "Crime Information by Vancouver Neighbourhood")
 
 ### Design 2
-![GitHub Logo](https://raw.githubusercontent.com/chuusan/DSCI_532_Group114_SKEC/blob/master/Img/App%20Sketch%20Part%201.png)
+![GitHub Logo](https://github.com/chuusan/DSCI_532_Group114_SKEC/blob/master/Img/App%20Sketch%20Part%201.png)
 ### Add description of the App
 
 ##### END!
