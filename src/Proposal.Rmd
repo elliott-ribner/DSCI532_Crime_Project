@@ -24,14 +24,14 @@ library(kableExtra)
 
 -------------------------------------------------------------------------------------------------------
 
-The dataset is obtained from the [Vancouver Police Department (VPD) website](https://geodash.vpd.ca/opendata/). It is based on the VPD Records Management System and contains information about the type of crime, nearest block, nearest neighborhood and date & time of the crime. The data contains information from 1st January 2003 to 31st October 2019. VPD aims to provide this data for the public interest, to enhance awareness & maintain transparency about crimes in Vancouver. Please note that the dataset does not include all the crimes because of privacy & investigative reasons. Location information in the data was offset so that no association with a specific person or property can be made.
+The dataset is obtained from the [Vancouver Police Department (VPD) website](https://geodash.vpd.ca/opendata/). It is based on the VPD Records Management System and contains information about the type of crime, nearest block, nearest neighborhood and date & time of the crime. The data contains information from the 1st of January 2003 to the 31st of October 2019. VPD aims to provide this data for the public interest, to enhance awareness & maintain transparency about crimes in Vancouver. Please note that the dataset does not include all the crimes because of privacy & investigative reasons. Location information in the data was offset so that no association with a specific person or property can be made.
 
 
 ### Variable Description
 
 | S No. | Variable | Description | Insight |
 | ----------- | ----------- | ----------- | ----------- |
-| 1 | TYPE | Type of crime reported | The most common type of crime is `Theft from Vehicle`, `Mischief` & `Break and Enter Residential/Other` |
+| 1 | TYPE | Type of crime reported | The most common type of crime is `Theft from Vehicle`, `Mischief` and `Break and Enter Residential/Other` |
 | 2 | YEAR | Year of crime reported | Number of crime occurrences reduced from 2003 to 2011 after which it started increasing. In 2018 the number of crimes was the same as in 2007 |
 | 3 | MONTH | Month of crime reported | There is no significant difference in the number of crimes by month |
 | 4 | DAY | Day of the month when the crime was reported | There is no significant difference in the number of crimes by day of month |
