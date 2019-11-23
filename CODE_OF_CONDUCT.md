@@ -7,14 +7,14 @@ We strive to complete the assigned tasks to the best of our abilities. We all sh
 - We will respect differences of opinion and settle any disputes in a democratic manner
 - We will treat each other, the instructors, and TA’s with respect.
 - We will attend the team meetings.
-- We will meet meet our individual deadlines as determined by the team
+- We will meet meet our individual deadlines as determined by the team.
 - We will stay in communication through slack, with an expectation to respond to questions within 24 hours.
 - We will complete our own work, and provide proper citations when necessary.
 - We will create an inclusive atmosphere and respect our differences in backgrounds.
 
 ### The following will not be tolerated:
 - Hateful, or disrespectful speech
-- Sexist, racist, or homophobic actions and langauge
+- Racist, or homophobic actions and language
 - Failure to communicate 
 - Plagiarism
 - Excessive tardiness or absence from group meetings
@@ -22,8 +22,8 @@ We strive to complete the assigned tasks to the best of our abilities. We all sh
 
 ### In cases of a transgression
 If a member of the group has crossed any lines or broken any of these rules, we should follow these steps:
-1. Alert the group member of their transgression one on one
-2. If the problem involves multiple people, discuss it as a group
+1. Alert the group member of their transgression one on one.
+2. If the problem involves multiple people, discuss it as a group.
 3. If steps 1 and 2 are not sufficient, we should share the transgression with an instructor or staff member and ask them for guidance. 
 
 ### MDS code of conduct
