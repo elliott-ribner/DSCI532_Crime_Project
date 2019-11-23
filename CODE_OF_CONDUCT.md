@@ -7,14 +7,14 @@ We strive to complete the assigned tasks to the best of our abilities. We all sh
 - We will respect differences of opinion and settle any disputes in a democratic manner
 - We will treat each other, the instructors, and TA’s with respect.
 - We will attend the team meetings.
-- We will meet meet our individual deadlines as determined by the team.
+- We will meet our individual deadlines as determined by the team.
 - We will stay in communication through slack, with an expectation to respond to questions within 24 hours.
 - We will complete our own work, and provide proper citations when necessary.
 - We will create an inclusive atmosphere and respect our differences in backgrounds.
 
 ### The following will not be tolerated:
 - Hateful, or disrespectful speech
-- Racist, or homophobic actions and language
+- Sexist, Racist, or homophobic actions and language
 - Failure to communicate 
 - Plagiarism
 - Excessive tardiness or absence from group meetings
