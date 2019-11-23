@@ -1,7 +1,8 @@
 Proposal- Vancouver Crime Tracker
 ================
 Chimaobi Amadi, Elliott Ribner, Shivam Verma, Xugang Zhong(Kirk)
-22/11/2019
+
+2019-11-22
 
 ## Motivation and Purpose
 
@@ -11,7 +12,7 @@ Living in a neighbourhood with high rate of crime could potentially be a traumat
 
 We therefore propose to solve this problem by creating an interactive dashboard which is capable of providing crime statistics and awareness, thereby helping the public make better decisions, and assist Vancouver Police Department raise awareness on the crime rates in Vancouver neighbourhoods.  It also has the ability to compare neighborhoods based on overall historic rates for crimes which include: Break and Enter, Homicide, Mischief, Offence Against a Person, Theft from Vehicle, Theft of Bicycle, Theft of Vehicle, Vehicle Collision or Pedestrian Struck (with Fatality),  and Vehicle Collision or Pedestrian Struck.
 
------
+
 
 ## Description of the Data
 
@@ -77,7 +78,6 @@ he can look at the trend of crime rate by year (*Chart 3*) and get to
 know the composition of crimes (*Chart 4*) as
 well.
 
------
 
 ## Sketch of the Application
 
