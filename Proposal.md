@@ -1,7 +1,8 @@
 Proposal- Vancouver Crime Tracker
 ================
 Chimaobi Amadi, Elliott Ribner, Shivam Verma, Xugang Zhong(Kirk)
-22/11/2019
+
+2019-11-22
 
 ## Motivation and Purpose
 
@@ -11,7 +12,7 @@ Living in a neighbourhood with high rate of crime could potentially be a traumat
 
 We therefore propose to solve this problem by creating an interactive dashboard which is capable of providing crime statistics and awareness, thereby helping the public make better decisions, and assist Vancouver Police Department raise awareness on the crime rates in Vancouver neighbourhoods.  It also has the ability to compare neighborhoods based on overall historic rates for crimes which include: Break and Enter, Homicide, Mischief, Offence Against a Person, Theft from Vehicle, Theft of Bicycle, Theft of Vehicle, Vehicle Collision or Pedestrian Struck (with Fatality),  and Vehicle Collision or Pedestrian Struck.
 
------
+
 
 ## Description of the Data
 
@@ -77,28 +78,22 @@ he can look at the trend of crime rate by year (*Chart 3*) and get to
 know the composition of crimes (*Chart 4*) as
 well.
 
------
 
 ## Sketch of the Application
 
 -----
-<<<<<<< HEAD
+
 ### Design 1
-![Sketch](https://raw.githubusercontent.com/vermashivam679/DSCI_532_Group114_SKEC/master/Img/sketch.png "Crime Information by Vancouver Neighbourhood")
+![Sketch](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Img/sketch.png?raw=true "Crime Information by Vancouver Neighbourhood")
 
 ### Design 2
-![Sketch1](https://github.com/chuusan/DSCI_532_Group114_SKEC/blob/master/Img/sketch1.png)
+![Sketch1](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Img/sketch1.png?raw=true)
 
-![Sketch2](https://github.com/chuusan/DSCI_532_Group114_SKEC/blob/master/Img/sketch2.png)
-### Add description of the App
-=======
-
-## ![Sketch](https://raw.githubusercontent.com/vermashivam679/DSCI_532_Group114_SKEC/master/Img/sketch.png "Crime Information by Vancouver Neighbourhood")
+![Sketch2](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Img/sketch2.png?raw=true)
 
 ### App Desciription
 
 -----
->>>>>>> upstream/master
 
   - We will have interactive visualizations of the VPD dataset described
     above.
