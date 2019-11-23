@@ -8,9 +8,9 @@ Chimaobi Amadi, Elliott Ribner, Shivam Verma, Xugang Zhong(Kirk)
 
 -----
 
-Living in a neighbourhood with high rates of crime could potentially be a traumatizing experience, this is especially true for school children exposed to a neighborhood full of crime and violence. For school children, such environments can result in difficulty learning, difficulty to focus, and additional stress and depression. Violent crimes are usually geographically concentrated in some particular neighborhoods, and often called `hot spots` in some localized places. If these `hot spots` are well known, the public can make well-informed proactive decisions about living in such areas. Additionally, problem-oriented policing efforts in and around the hot spots can be improved.
+Living in a neighborhood with high rates of crime could potentially be a traumatizing experience, this is especially true for school children exposed to a neighborhood full of crime and violence. For school children, such environments can result in difficulty learning, difficulty to focus, and additional stress and depression. Violent crimes are usually geographically concentrated in some particular neighborhoods, and often called `hot spots` in some localized places. If these `hot spots` are well known, the public can make well-informed proactive decisions about living in such areas. Additionally, problem-oriented policing efforts in and around the hot spots can be improved.
 
-We therefore propose to solve this problem by creating an interactive dashboard which is capable of providing crime statistics and awareness. This will help the public make better decisions, and assist Vancouver Police Department to raise awareness on the crime rates in Vancouver neighbourhoods.  Also, it provides the ability to compare neighborhoods based on overall historic rates for crimes which include: Break and Enter, Homicide, Mischief, Offence Against a Person, Theft from Vehicle, Theft of Bicycle, Theft of Vehicle, Vehicle Collision or Pedestrian Struck (with Fatality), and Vehicle Collision or Pedestrian Struck.
+We, therefore, propose to solve this problem by creating an interactive dashboard that is capable of providing crime statistics and awareness. This will help the public make better decisions, and assist the Vancouver Police Department to raise awareness on the crime rates in Vancouver neighborhoods.  Also, it provides the ability to compare neighborhoods based on overall historic rates for crimes which include: `Break and Enter`, `Homicide`, `Mischief`, `Offence Against a Person`, `Theft from Vehicle`, `Theft of Bicycle`, `Theft of Vehicle`, and `Vehicle Collision or Pedestrian Struck`.
 
 
 
@@ -49,25 +49,25 @@ made.
 
 -----
 
-Peter and his family plans to relocate to Canada. As a result of the
-favourable weather condition in Vancouver, they decide to settle in
+Peter and his family plan to relocate to Canada. As a result of the
+favorable weather condition in Vancouver, they decide to settle in
 Vancouver. Their first goal is to find accommodation: renting and
-eventually owning a house in a safe neighbourhood, as well as safety for
-their kids especially at school. The family does not know anyone in
+eventually owning a house in a safe neighborhood, as well as safety for
+their kids, especially at school. The family does not know anyone in
 Vancouver and relies on a reliable source of information regarding the
-crime situation and trend in each of the neighbourhoods in Vancouver.
+crime situation and trend in each of the neighborhoods in Vancouver.
 
-There are many people like Peter and his family; and to help solve their
+There are many people like Peter and his family, and to help solve their
 problem, we plan on creating an interactive app that has the capability
 of displaying crime information at a glance. The secondary motivation
-for this app is answer general crime trends in Vancouver and create
-awareness about crime rates per neighbourhood and need for drastic
+for this app is to answer general crime trends in Vancouver and create
+awareness about crime rates per neighborhood and need for drastic
 intervention.
 
 Using the dataset provided by the Vancouver Police Department (VPD), we
 will build an interactive dashboard with the historic crime situation in
 the city from 2003 to 2019. There are 3 filters provided in the
-dashboard which includes the neighborhood, type of crime and the period
+dashboard which include the neighborhood, type of crime and the period
 in years. The filter option streamlines the visualization and produces
 charts that answer the questions.
 
@@ -95,31 +95,14 @@ well.
 
 -----
 
-  - We will have interactive visualizations of the VPD dataset described
-    above.
-  - The sketch above gives a glimpse of how the data will be visualized.
-  - We will have three selectors (described below) that will allow us to
-    filter the data that is represented in the five visualizations
-    above.
-  - The neighbourhood selector will allow us to filter by neighbourhood,
-    crimes only in that neighbourhood will show up. We can’t colour or
-    mark neighbourhoods on map because the variable latitude & longitude
-    is for a particular crime scene & in the dataset there is a
-    categorical variable: neighbourhood and linking it on the map would
-    be difficult. But we can colour code type of crime.
-  - We will have a type of crime selector that will filter the data set
-    and the data visualizations by crime type, if no crime type is
-    selected we will show all crime types.
-  - The slider for selecting year is given because old data may be less
-    relevant, so we can let the user decide the time period that is most
-    relevant to them.
-  - A histogram of crime by month will show the monthly crime patterns.
-  - A histogram of crime by hour will show the patterns of crime
-    throughout the day.
-  - A map of Vancouver will be used to show crime trends by location.
-    Different colors will be applied to different regions of the map to
-    denote high and low crime areas.
-  - A line chart will show the pattern of crime over the years,
-    normalized for population change.
-  - Lastly a pie chart will be used to show what percentage of the total
-    crimes any particular type of crime represents.
+- We will have interactive visualizations of the VPD dataset described above.
+- The sketch above gives a glimpse of how the data will be visualized.
+- We will have three selectors (described below) that will allow us to filter the data that is represented in the five visualizations above.
+	- The neighborhood selector will allow us to filter by neighborhood, crimes only in that neighborhood will show up.
+	- We will have a type of crime selector that will filter the data set and the data visualizations by crime type, if no crime type is selected we will show all crime types.
+	- The slider for selecting years is given because old data may be less relevant, so we can let the user decide the time period that is most relevant to them.
+- A bar-chart of crime by month will show the monthly crime patterns.
+- A bar-chart of crime by the hour will show the patterns of crime throughout the day.
+- A map of Vancouver will be used to show crime instances by location. Different colors will be applied to different regions of the map to denote high and low crime areas.
+- A line chart will show the pattern of crime over the years, normalized for population change.
+- Lastly, a pie chart will be used to show what percentage of the total crimes any particular type of crime represents.
