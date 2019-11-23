@@ -15,7 +15,7 @@ This repository is to demonstrate an interactive visualization app developed on 
 [License](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/LICENSE)  
 
 ## Folder Structure:
-`Data`: contains all raw data for the dashboard  
-`Img`: contains saved images and plots  
-`src`: contains all code files used to wrangle the data, create plots, and make the dashboard   
+`Data`: This is where data resides  
+`Img`: Images of App designs  
+`src`: Contains all the source codes we have used to develop this app   
 
