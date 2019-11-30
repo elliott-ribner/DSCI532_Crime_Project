@@ -243,7 +243,7 @@ selectors = dbc.Container([
                     value=["Arbutus-Ridge", "Downtown", "Dunbar-Southlands", "Fairview", "Grandview-Woodland", "Hastings-Sunrise", "Kensington-Cedar Cottage", "Kerrisdale", "Killarney", "Kitsilano", "Marpole", "Mount Pleasant", "Oakridge", "Renfrew-Collingwood", "Riley Park", "Shaughnessy", "South Cambie", "Strathcona", "Sunset", "Victoria-Fraserview", "West End", "West Point Grey"],
                     multi=True,
                 ),
-                md=4,
+                md=8,
             ),
            
             dbc.Col(
@@ -262,7 +262,7 @@ selectors = dbc.Container([
                         value=['Break and Enter Commercial', 'Break and Enter Residential/Other', 'Mischief', 'Theft from Vehicle', 'Theft of Bicycle', 'Theft of Vehicle', 'Vehicle Collision or Pedestrian Struck'],
                         multi=True,
                 ),
-                md=6,
+                md=4,
             )
         ]
     ),
