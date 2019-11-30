@@ -23,7 +23,7 @@ app.title = 'Dash app with pure Altair HTML'
 
 import os as os
 x = os.getcwd()
-x = x[:len(x)-3]
+x = x[:len(x)-0]
 # Reading Vancouver City Population from 2001 to 2018
 path_pop=x + "/Data/Population_trend.csv"
 pop_yr = pd.read_csv(path_pop)
