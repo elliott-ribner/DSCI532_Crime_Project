@@ -197,7 +197,7 @@ jumbotron = dbc.Jumbotron(
             [
                 #html.Img(src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1920px-Unico_Anello.png', 
                       #width='100px'),
-                html.H1("Vancouver Neighbourhood Crime Rates", className="display-3"),
+                html.H1("Vancouver Crime Tracker", className="display-3"),
                 html.P(
                     "This is an interactive visualization based on the data provided by the Vancouver Police Department (VPD)",
                     className="lead",
@@ -234,13 +234,13 @@ selectors = dbc.Container([
                         {'label': 'Victoria-Fraserview', 'value': 'Victoria-Fraserview'},                
                         {'label': 'Kerrisdale', 'value': 'Kerrisdale'},                
                         {'label': 'Riley Park', 'value': 'Riley Park'},
-                        {'label': 'Arbutus Ridge', 'value': 'Arbutus Ridge'},
+                        {'label': 'Arbutus-Ridge', 'value': 'Arbutus-Ridge'},
                         {'label': 'Renfrew-Collingwood', 'value': 'Renfrew-Collingwood'},
                         {'label': 'Killarney', 'value': 'Killarney'},
                         {'label': 'Dunbar-Southlands', 'value': 'Dunbar-Southlands'},
                         {'label': 'South Cambie', 'value': 'South Cambie'}
                     ],
-                    value=['Downtown', 'Fairview'],
+                    value=["Arbutus-Ridge", "Downtown", "Dunbar-Southlands", "Fairview", "Grandview-Woodland", "Hastings-Sunrise", "Kensington-Cedar Cottage", "Kerrisdale", "Killarney", "Kitsilano", "Marpole", "Mount Pleasant", "Oakridge", "Renfrew-Collingwood", "Riley Park", "Shaughnessy", "South Cambie", "Strathcona", "Sunset", "Victoria-Fraserview", "West End", "West Point Grey"],
                     multi=True,
                 ),
                 md=4,
@@ -256,12 +256,10 @@ selectors = dbc.Container([
                             {'label': 'Theft from Vehicle', 'value': 'Theft from Vehicle'},
                             {'label': 'Theft of Bicycle', 'value': 'Theft of Bicycle'},
                             {'label': 'Theft of Vehicle', 'value': 'Theft of Vehicle'},
-                            {'label': 'Vehicle Collision or Pedestrian Struck (with Fatality)', 
-                                'value': 'Vehicle Collision or Pedestrian Struck (with Fatality)'},
-                            {'label': 'Vehicle Collision or Pedestrian Struck (with Injury)', 
-                                'value': 'Vehicle Collision or Pedestrian Struck (with Injury)'}
+                            {'label': 'Vehicle Collision or Pedestrian Struck', 
+                                'value': 'Vehicle Collision or Pedestrian Struck'}
                         ],
-                        value=['Break and Enter Commercial','Homicide'],
+                        value=['Break and Enter Commercial', 'Break and Enter Residential/Other', 'Mischief', 'Theft from Vehicle', 'Theft of Bicycle', 'Theft of Vehicle', 'Vehicle Collision or Pedestrian Struck'],
                         multi=True,
                 ),
                 md=6,
@@ -275,7 +273,7 @@ selectors = dbc.Container([
             dcc.RangeSlider(
             id='year_slider',
             min=2003,
-            max=2019,
+            max=2018,
             step=1,
             value=[2003, 2015],
             marks={
@@ -294,8 +292,7 @@ selectors = dbc.Container([
                  2015:{'label': '2015'},
                  2016:{'label': '2016'},
                  2017:{'label': '2017'},
-                 2018:{'label': '2018'},
-                 2019:{'label': '2019'}
+                 2018:{'label': '2018'}
     },
             )
         ]),
@@ -373,7 +370,7 @@ content = dbc.Container([
         ]),
         dbc.Row([
             dbc.Col([
-                html.H2("Constituents on Selected Crimes"),
+                html.H2("Constituents of Selected Crimes"),
                 
                 html.Iframe(
                         sandbox='allow-scripts',
