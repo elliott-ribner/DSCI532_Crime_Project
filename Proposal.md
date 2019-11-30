@@ -98,8 +98,8 @@ well.
 - We will have interactive visualizations of the VPD dataset described above.
 - The sketch above gives a glimpse of how the data will be visualized.
 - We will have three selectors (described below) that will allow us to filter the data that is represented in the five visualizations above.
-	- The neighborhood selector will allow us to filter by neighborhood, crimes only in that neighborhood will show up.
-	- We will have a type of crime selector that will filter the data set and the data visualizations by crime type, if no crime type is selected we will show all crime types.
+	- The neighborhood dropdown mean will allow users to select a single neighborhood or multiple neighborhoods, crimes only in that neighborhood(s) will show up.
+	- Through the crime dropdown, users can filter the data set and the data visualizations by crime type. The default seletion will include all tyeps of crimes.
 	- The slider for selecting years is given because old data may be less relevant, so we can let the user decide the time period that is most relevant to them.
 - A bar-chart of crime by month will show the monthly crime patterns.
 - A bar-chart of crime by the hour will show the patterns of crime throughout the day.
