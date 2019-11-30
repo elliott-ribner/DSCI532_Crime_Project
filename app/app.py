@@ -220,7 +220,7 @@ selectors = dbc.Container([
                         {'label': 'Oakridge', 'value': 'Oakridge'},
                         {'label': 'Fairview', 'value': 'Fairview'},
                         {'label': 'West End', 'value': 'West End'},
-                        {'label': 'Central Business District', 'value': 'Central Business District'},
+                        {'label': 'Downtown', 'value': 'Downtown'},
                         {'label': 'Hastings-Sunrise', 'value': 'Hastings-Sunrise'},
                         {'label': 'Strathcona', 'value': 'Strathcona'},
                         {'label': 'Grandview-Woodland', 'value': 'Grandview-Woodland'},
@@ -240,7 +240,7 @@ selectors = dbc.Container([
                         {'label': 'Dunbar-Southlands', 'value': 'Dunbar-Southlands'},
                         {'label': 'South Cambie', 'value': 'South Cambie'}
                     ],
-                    value=['Central Business District', 'Fairview'],
+                    value=['Downtown', 'Fairview'],
                     multi=True,
                 ),
                 md=4,
