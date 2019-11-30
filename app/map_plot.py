@@ -11,7 +11,7 @@ alt.data_transformers.disable_max_rows()
 #alt.data_transformers.enable('data_server')
 
 # load geo_json file
-geo_json_file_loc= 'Data/local-area-boundary.geojson.'
+geo_json_file_loc= '../Data/local-area-boundary.geojson'
 
 def open_geojson():
     with open(geo_json_file_loc) as json_data:
@@ -25,7 +25,7 @@ def get_gpd_df():
 
 gdf = get_gpd_df()
 # load crime data
-df = pd.read_csv("Data/crimedata_csv_all_years.csv", encoding = 'latin-1', )
+df = pd.read_csv("../Data/crimedata_csv_all_years.csv", encoding = 'latin-1', )
 df = df[["NEIGHBOURHOOD", "TYPE", 'YEAR','MONTH','HOUR']]
 df['NEIGHBOURHOOD'] = df['NEIGHBOURHOOD'].str.replace("Musqueam", "Marpole",regex = True)
 df['NEIGHBOURHOOD'] = df['NEIGHBOURHOOD'].str.replace("Stanley Park", "West End",regex = True)
@@ -82,7 +82,7 @@ def create_merged_gdf(df, gdf, neighbourhood):
         # For each row update the 'Bonus' value to it's double
             if index_label not in neighbourhood:
                 df.at[index_label , 'YEAR'] = None
-    gdf = gdf.merge(df, left_on='Name', right_on='DISTRICT', how='inner')
+    gdf = gdf.merge(df, left_on='name', right_on='NEIGHBOURHOOD', how='inner')
     return gdf
 
 def create_geo_data(gdf):
@@ -212,7 +212,7 @@ app.layout = html.Div(style={'backgroundColor': colors['light_grey']}, children 
 
     # HEADER
     html.Div(className = 'row', style = {'backgroundColor': colors["ubc_blue"], "padding" : 10}, children = [
-        html.H2('Boston Crime Dashboard', style={'color' : colors["white"]})
+        html.H2('Vancouver Crime Dashboard', style={'color' : colors["white"]})
     ]),
     
     # BODY
@@ -265,17 +265,30 @@ app.layout = html.Div(style={'backgroundColor': colors['light_grey']}, children 
             dcc.Dropdown(
                 id = 'neighbourhood-dropdown',
                     options=[
-                        {'label': 'Brighton', 'value': 'Brighton'},
-                        {'label': 'Dorchester', 'value': 'Dorchester'},
-                        {'label': 'Downtown', 'value': 'Downtown'},
-                        {'label': 'East Boston', 'value': 'East Boston'},
-                        {'label': 'Hyde Park', 'value': 'Hyde Park'},
-                        {'label': 'Jamaica Plain', 'value': 'Jamaica Plain'},
-                        {'label': 'Mattapan', 'value': 'Mattapan'},
-                        {'label': 'Roxbury', 'value': 'Roxbury'},                
-                        {'label': 'South Boston', 'value': 'South Boston'},                
-                        {'label': 'South End', 'value': 'South End'},                
-                        {'label': 'West Roxbury', 'value': 'West Roxbury'}                
+                        {'label': 'Oakridge', 'value': 'Oakridge'},
+                        {'label': 'Fairview', 'value': 'Fairview'},
+                        {'label': 'West End', 'value': 'West End'},
+                        {'label': 'Central Business District', 'value': 'Central Business District'},
+                        {'label': 'Hastings-Sunrise', 'value': 'Hastings-Sunrise'},
+                        {'label': 'Strathcona', 'value': 'Strathcona'},
+                        {'label': 'Grandview-Woodland', 'value': 'Grandview-Woodland'},
+                        {'label': 'Kitsilano', 'value': 'Kitsilano'},                
+                        {'label': 'Kensington-Cedar Cottage', 'value': 'Kensington-Cedar Cottage'},                
+                        {'label': 'Sunset', 'value': 'Sunset'},                
+                        {'label': 'Mount Pleasant', 'value': 'Mount Pleasant'} ,
+                        {'label': 'Shaughnessy', 'value': 'Shaughnessy'},
+                        {'label': 'Marpole', 'value': 'Marpole'},                
+                        {'label': 'West Point Grey', 'value': 'West Point Grey'},                
+                        {'label': 'Victoria-Fraserview', 'value': 'Victoria-Fraserview'},                
+                        {'label': 'Riley Park', 'value': 'Riley Park'},
+                        {'label': 'Arbutus Ridge', 'value': 'Arbutus Ridge'},
+                        {'label': 'Renfrew-Collingwood', 'value': 'Renfrew-Collingwood'},
+                        {'label': 'Killarney', 'value': 'Killarney'},
+                        {'label': 'Dunbar-Southlands', 'value': 'Dunbar-Southlands'},
+                        {'label': 'South Cambie', 'value': 'South Cambie'}
+
+
+
                     ],
                     value=None, style=dict(width='100%'),
                     multi=True          
@@ -307,8 +320,8 @@ app.layout = html.Div(style={'backgroundColor': colors['light_grey']}, children 
                 html.Iframe(
                     sandbox='allow-scripts',
                     id='choro-plot',
-                    height='500',
-                    width='500',
+                    height='800',
+                    width='800',
                     style={'border-width': '0px'},
                     )
 
