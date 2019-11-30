@@ -2,11 +2,15 @@ DSCI_532_Group114_SKEC_Vancouver_Crime_Tracker
 ================
 @Chimaobi Amadi, Elliott Ribner, Shivam Verma, Xugang Zhong(Kirk)
 
-## App Summary & Screenshop
+## Dashboard & Screenshot
 This repository is to demonstrate an interactive visualization app developed on the [data](https://geodash.vpd.ca/opendata/) provided by the Vancouver Police Department (VPD). Our aim is to help spread awareness about Crimes in Vancouver and facilitate transparency of policing activity. Please have a look at the documents listed below to get into more details. We welcome improvements from anyone willing to contribute to our app to make it better. Also, please find below a rough sketch of the application for a quick walkthrough.  
 
 #### Screenshot of the Dashboard 
 ![Dashboard_screenshot](/Img/dashboard_screenshot.png)
+
+#### Heroku Deployment
+
+Please click [here](https://dsci532group114milestone2.herokuapp.com) to view the final dashboard!
 
 ## Key Documents:
 [App Proposal](https://github.com/UBC-MDS/DSCI_532_Group114_SKEC/blob/master/Proposal.md)  
