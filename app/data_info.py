@@ -36,6 +36,7 @@ def clean_data():
     mydata = mydata.replace({'NEIGHBOURHOOD': 'Stanley Park'}, value = 'West End')
     # Relacing Musqueam with Marpole because its a subset
     mydata = mydata.replace({'NEIGHBOURHOOD': 'Musqueam'}, value = 'Marpole')
+    mydata = mydata.replace({'NEIGHBOURHOOD': 'Central Business District'}, value = 'Downtown')
     # >>>>
 
 
