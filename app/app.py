@@ -147,6 +147,13 @@ def make_charts(type_lst=['Break and Enter Commercial'],
     ).properties(
         width=350,
         height=300
+    ).configure_axisX(
+         titleFontSize=15,
+        labelFontSize=12, 
+        labelAngle = 0
+    ).configure_axisY(
+         titleFontSize=15,
+        labelFontSize=12
     )
 
     charts[2] = alt.Chart(TOD).mark_bar().encode(
@@ -157,6 +164,13 @@ def make_charts(type_lst=['Break and Enter Commercial'],
     ).properties(
         width=350,
         height=300
+    ).configure_axisX(
+         titleFontSize=15,
+        labelFontSize=12, 
+        labelAngle = 30
+    ).configure_axisY(
+         titleFontSize=15,
+        labelFontSize=12
     )
 
     charts[3] = alt.Chart(crime_rate).mark_line().encode(
@@ -165,9 +179,14 @@ def make_charts(type_lst=['Break and Enter Commercial'],
         tooltip=[alt.Tooltip('rate:Q', title = 'Crime Rate'),
                                     alt.Tooltip('YEAR:Q', title = 'Year')]
     ).properties(
-        width=350,
+        width=400,
         height=300 
-        
+    ).configure_axisX(
+         titleFontSize=15,
+        labelFontSize=12
+    ).configure_axisY(
+         titleFontSize=15,
+        labelFontSize=12
     )
 
     charts[4] = alt.Chart(type_crimes).mark_bar().encode(
@@ -177,10 +196,19 @@ def make_charts(type_lst=['Break and Enter Commercial'],
                     field='contri',
                     order="descending"
                 )),
-        y=alt.Y('contri', axis=alt.Axis(title='Contribution', format='%'),)
+        y=alt.Y('contri', axis=alt.Axis(title='Contribution', format='%')),
+        tooltip=[alt.Tooltip('contri:Q', title = 'Contribution', format='%'),
+                            alt.Tooltip('TYPE:N', title = 'Crime Type')]
     ).properties(
-        width=750,
+        width=500,
         height=300
+    ).configure_axisX(
+         titleFontSize=15,
+        labelFontSize=12, 
+        labelAngle = 45
+    ).configure_axisY(
+         titleFontSize=15,
+        labelFontSize=12
     )
 
     #test_dict = {'TYPE': df.TYPE.unique(), 'NEIGHBOURHOOD': df.NEIGHBOURHOOD.unique(), 'YEAR': df.YEAR.unique()}
@@ -311,7 +339,7 @@ content = dbc.Container([
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot1',
-                        height='560',
+                        height='400',
                         width='600',
                         style={'border-width': '0'},
                         ################ The magic happens here
@@ -326,7 +354,7 @@ content = dbc.Container([
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot2',
-                        height='560',
+                        height='400',
                         width='500',
                         style={'border-width': '0'},
                         ################ The magic happens here
@@ -343,7 +371,7 @@ content = dbc.Container([
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot3',
-                        height='560',
+                        height='400',
                         width='500',
                         style={'border-width': '0'},
                         ################ The magic happens here
@@ -358,7 +386,7 @@ content = dbc.Container([
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot4',
-                        height='560',
+                        height='400',
                         width='500',
                         style={'border-width': '0'},
                         ################ The magic happens here
@@ -369,6 +397,7 @@ content = dbc.Container([
             md=6),
         ]),
         dbc.Row([
+            dbc.Col([],md=2),
             dbc.Col([
                 html.H2("Constituents of Selected Crimes"),
                 
@@ -384,7 +413,7 @@ content = dbc.Container([
                 )
 
             ],
-            md=12),
+            md=6),
         ]),
     ]
 )
