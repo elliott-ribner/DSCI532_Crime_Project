@@ -8,6 +8,8 @@ This repository is to demonstrate an interactive visualization app developed on 
 #### Screenshot of the Dashboard 
 ![Dashboard_screenshot](/Img/dashboard_screenshot.png)
 
+![Dashboard_screenshot](/Img/dashboard_screenshot2.png)
+
 #### Heroku Deployment
 
 Please click [here](https://dsci532group114milestone2.herokuapp.com) to view the final dashboard!
