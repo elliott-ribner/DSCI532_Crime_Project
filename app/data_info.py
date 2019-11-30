@@ -36,6 +36,14 @@ def clean_data():
     mydata = mydata.replace({'NEIGHBOURHOOD': 'Stanley Park'}, value = 'West End')
     # Relacing Musqueam with Marpole because its a subset
     mydata = mydata.replace({'NEIGHBOURHOOD': 'Musqueam'}, value = 'Marpole')
+    mydata = mydata.replace({'NEIGHBOURHOOD': 'Central Business District'}, value = 'Downtown')
+    mydata = mydata.replace({'NEIGHBOURHOOD': 'Arbutus Ridge'}, value = 'Arbutus-Ridge')
+
+    mydata = mydata.replace({'TYPE': 'Vehicle Collision or Pedestrian Struck (with Fatality)'}, value = 'Vehicle Collision or Pedestrian Struck')
+    mydata = mydata.replace({'TYPE': 'Vehicle Collision or Pedestrian Struck (with Injury)'}, value = 'Vehicle Collision or Pedestrian Struck')
+
+
+
     # >>>>
 
 
