@@ -4,6 +4,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import altair as alt
 import vega_datasets
+
 import numpy as np
 import data_info
 
@@ -19,7 +20,9 @@ app.title = 'Dash app with pure Altair HTML'
 
 
 
-def make_charts(type_lst=['Break and Enter Commercial'], ngbrhd_lst=['Oakridge'], yr_lst=['2012']):
+def make_charts(type_lst=['Break and Enter Commercial'], 
+                ngbrhd_lst=['Oakridge'], 
+                yr_lst=['2012']):
     mydata = data_info.clean_data()
     df = mydata[(mydata['TYPE'].isin(type_lst)) & (mydata['NEIGHBOURHOOD'].isin(ngbrhd_lst)) & (mydata['YEAR'].isin(yr_lst))]
     
@@ -107,9 +110,91 @@ jumbotron = dbc.Jumbotron(
     ],
     fluid=True,
 )
+###
+selectors = dbc.Container([
 
-#logo = dbc.Row(dbc.Col(html.Img(src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1920px-Unico_Anello.png', 
-                      #width='15%'), width=4))
+    dbc.Row(
+        [
+            dbc.Col(
+                dcc.Dropdown(
+                    id='neighbour_dropdown',
+                    options=[
+                        {'label': 'All Neigbourhoods', 'value': 'All'},
+                        {'label': 'Central Business District', 'value': 'Central Business District'},
+                        {'label': 'West End', 'value': 'West End'},
+                        {'label': 'Fairview', 'value': 'Fairview'},
+                        {'label': 'Mount Pleasant', 'value': 'Mount Pleasant'}
+                    ],
+                    value=['Central Business District', 'Fairview'],
+                    multi=True,
+                ),
+                md=4,
+            ),
+            dbc.Col(
+                dcc.Dropdown(
+                    id='year_dropdown',
+                    options=[
+                        {'label': '2003', 'value': '2003'},
+                        {'label': '2004', 'value': '2004'},
+                        {'label': '2005', 'value': '2005'},
+                        {'label': '2006', 'value': '2006'},
+                        {'label': '2007', 'value': '2007'},
+                        {'label': '2008', 'value': '2008'},
+                        {'label': '2009', 'value': '2009'},
+                        {'label': '2010', 'value': '2010'},
+                        {'label': '2011', 'value': '2011'},
+                        {'label': '2012', 'value': '2012'},
+                        {'label': '2013', 'value': '2013'},
+                        {'label': '2014', 'value': '2014'},
+                        {'label': '2015', 'value': '2015'},
+                        {'label': '2016', 'value': '2016'},
+                        {'label': '2017', 'value': '2017'},
+                        {'label': '2018', 'value': '2018'},
+                        {'label': '2019', 'value': '2019'}
+                    ],
+                    value=['2003','2004'],
+                    multi=True,
+                ),
+                md=4,
+            ),
+            dbc.Col(
+                    dcc.Dropdown(
+                        id='crime_type_dropdown',
+                        options=[
+                            {'label': 'Break and Enter Commercial', 'value': 'Break and Enter Commercial'},
+                            {'label': 'Break and Enter Residential/Other', 'value': 'Break and Enter Residential/Other'},
+                            {'label': 'Homicide', 'value': 'Homicide'},
+                            {'label': 'Mischief', 'value': 'Mischief'},
+                            {'label': 'Offence Against a Person', 'value': 'Other Theft'},
+                            {'label': 'Theft from Vehicle', 'value': 'Theft from Vehicle'},
+                            {'label': 'Theft of Bicycle', 'value': 'Theft of Bicycle'},
+                            {'label': 'Theft of Vehicle', 'value': '2010'},
+                            {'label': 'Vehicle Collision or Pedestrian Struck (with Fatality)', 
+                                'value': 'Vehicle Collision or Pedestrian Struck (with Fatality)'},
+                            {'label': 'Vehicle Collision or Pedestrian Struck (with Injury)', 
+                                'value': 'Vehicle Collision or Pedestrian Struck (with Injury)'}
+                        ],
+                        value=['Break and Enter Commercial','Homicide'],
+                        multi=True,
+                ),
+                md=4,
+            )
+        ]
+    ),
+    dbc.Row([
+        dbc.Col([
+            dcc.RangeSlider(
+            id='my-range-slider',
+            min=2003,
+            max=2019,
+            step=1,
+            value=[2003, 2015]
+            )
+        ]),
+    ])
+])
+
+###
 
 content = dbc.Container([
 
@@ -200,21 +285,69 @@ footer = dbc.Container([dbc.Row(dbc.Col(html.P('This Dash app was made collabora
          ])
 
 app.layout = html.Div([jumbotron,
+                       selectors,
                        content,
                        footer])
 
 
 @app.callback(
-    dash.dependencies.Output('plot', 'srcDoc'),
-    [dash.dependencies.Input('dd-chart-x', 'value'),
-     dash.dependencies.Input('dd-chart-y', 'value')])
-def update_plot(xaxis_column_name,
-                yaxis_column_name):
+    dash.dependencies.Output('plot1', 'srcDoc'),
+    [dash.dependencies.Input('crime_type_dropdown', 'value'),
+     dash.dependencies.Input('neighbour_dropdown', 'value'),
+     dash.dependencies.Input('year_dropdown', 'value')])
+def update_plot(type_lst, ngbrhd_lst, yr_lst):
     '''
     Takes in an xaxis_column_name and calls make_plot to update our Altair figure
     '''
-    updated_plot = make_plot(xaxis_column_name,
-                             yaxis_column_name).to_html()
+    updated_plot = make_charts(type_lst, ngbrhd_lst, yr_lst)[0].to_html()
+    return updated_plot
+
+@app.callback(
+    dash.dependencies.Output('plot2', 'srcDoc'),
+    [dash.dependencies.Input('crime_type_dropdown', 'value'),
+     dash.dependencies.Input('neighbour_dropdown', 'value'),
+     dash.dependencies.Input('year_dropdown', 'value')])
+def update_plot(type_lst, ngbrhd_lst, yr_lst):
+    '''
+    Takes in an xaxis_column_name and calls make_plot to update our Altair figure
+    '''
+    updated_plot = make_charts(type_lst, ngbrhd_lst, yr_lst)[1].to_html()
+    return updated_plot
+
+@app.callback(
+    dash.dependencies.Output('plot3', 'srcDoc'),
+    [dash.dependencies.Input('crime_type_dropdown', 'value'),
+     dash.dependencies.Input('neighbour_dropdown', 'value'),
+     dash.dependencies.Input('year_dropdown', 'value')])
+def update_plot(type_lst, ngbrhd_lst, yr_lst):
+    '''
+    Takes in an xaxis_column_name and calls make_plot to update our Altair figure
+    '''
+    updated_plot = make_charts(type_lst, ngbrhd_lst, yr_lst)[2].to_html()
+    return updated_plot
+
+@app.callback(
+    dash.dependencies.Output('plot4', 'srcDoc'),
+    [dash.dependencies.Input('crime_type_dropdown', 'value'),
+     dash.dependencies.Input('neighbour_dropdown', 'value'),
+     dash.dependencies.Input('year_dropdown', 'value')])
+def update_plot(type_lst, ngbrhd_lst, yr_lst):
+    '''
+    Takes in an xaxis_column_name and calls make_plot to update our Altair figure
+    '''
+    updated_plot = make_charts(type_lst, ngbrhd_lst, yr_lst)[3].to_html()
+    return updated_plot
+
+@app.callback(
+    dash.dependencies.Output('plot5', 'srcDoc'),
+    [dash.dependencies.Input('crime_type_dropdown', 'value'),
+     dash.dependencies.Input('neighbour_dropdown', 'value'),
+     dash.dependencies.Input('year_dropdown', 'value')])
+def update_plot(type_lst, ngbrhd_lst, yr_lst):
+    '''
+    Takes in an xaxis_column_name and calls make_plot to update our Altair figure
+    '''
+    updated_plot = make_charts(type_lst, ngbrhd_lst, yr_lst)[4].to_html()
     return updated_plot
 
 if __name__ == '__main__':
