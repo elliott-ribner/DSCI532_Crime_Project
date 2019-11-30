@@ -4,9 +4,9 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import altair as alt
 import vega_datasets
-
 import numpy as np
 import data_info
+import pandas as pd
 
 ### NEW IMPORT
 # See Docs here: https://dash-bootstrap-components.opensource.faculty.ai
@@ -18,12 +18,24 @@ app.config['suppress_callback_exceptions'] = True
 server = app.server
 app.title = 'Dash app with pure Altair HTML'
 
+import os as os
+x = os.getcwd()
+x = x[:len(x)-0]
+# Reading Vancouver City Population from 2001 to 2018
+path_pop=x + "/Data/Population_trend.csv"
+pop_yr = pd.read_csv(path_pop)
+pop_yr = pop_yr[['YEAR', 'Population']]
+# Reading each neighborhood's proportion of population to overall city's population
+path_prop=x + "/Data/population_proportion.csv"
+pop_prop = pd.read_csv(path_prop)
+# >>>>    
+# >>>> Changing function to take data as an input
+mydata = data_info.clean_data()
 
 
 def make_charts(type_lst=['Break and Enter Commercial'], 
                 ngbrhd_lst=['Oakridge'], 
                 yr_lst=['2012']):
-    mydata = data_info.clean_data()
     df = mydata[(mydata['TYPE'].isin(type_lst)) & (mydata['NEIGHBOURHOOD'].isin(ngbrhd_lst)) & (mydata['YEAR'].isin(yr_lst))]
     
     MOY = df.groupby('MONTH')['MONTH'].agg([('N', 'count')]).reset_index().sort_values('MONTH', ascending=True)
@@ -33,6 +45,15 @@ def make_charts(type_lst=['Break and Enter Commercial'],
 
     crime_rate = df.groupby('YEAR')['YEAR'].agg([('N', 'count')]).reset_index().sort_values('YEAR', ascending=True)
 
+    # >>>>
+    # Adding population data to plot crime rate
+    required_prop = sum(pop_prop[pop_prop['NEIGHBOURHOOD'].isin(ngbrhd_lst)]['proportion'].values)
+    required_pop = pop_yr[pop_yr['YEAR'].isin(yr_lst)]
+    required_pop['Population'] = required_pop['Population']*required_prop
+    crime_rate = pd.merge(crime_rate, required_pop, how="inner", on="YEAR")
+    crime_rate['rate'] = (crime_rate['N']/crime_rate['Population'])*1000
+    # >>>>
+    
     charts = {}
     charts[0] = alt.Chart(df).mark_point().encode(
         x=alt.X('Lon:Q', title='Longitude', scale=alt.Scale(domain=[np.min(df.Lon), np.max(df.Lon)])),
@@ -40,8 +61,7 @@ def make_charts(type_lst=['Break and Enter Commercial'],
         color = 'NEIGHBOURHOOD:N'
     ).properties(
         width=350,
-        height=300, 
-        title = "Crimes In Vancouver"
+        height=300
     ).interactive()
 
     charts[1] = alt.Chart(MOY).mark_bar().encode(
@@ -49,8 +69,7 @@ def make_charts(type_lst=['Break and Enter Commercial'],
         y=alt.Y('N', title='Occurrence Count')
     ).properties(
         width=350,
-        height=300, 
-        title = "Crime Occurrence By Month"
+        height=300
     )
 
     charts[2] = alt.Chart(TOD).mark_bar().encode(
@@ -58,17 +77,16 @@ def make_charts(type_lst=['Break and Enter Commercial'],
         y=alt.Y('N', title='Occurrence Count')
     ).properties(
         width=350,
-        height=300, 
-        title = "Crime Occurrence By Time of Day"
+        height=300
     )
 
     charts[3] = alt.Chart(crime_rate).mark_line().encode(
         x=alt.X('YEAR:O'),
-        y=alt.Y('N', title='Occurrence Count')
+        y=alt.Y('rate', title='Crime Occurrences per 1000 People')
     ).properties(
         width=350,
-        height=300, 
-        title = "Crime Rate"
+        height=300 
+        
     )
 
     charts[4] = alt.Chart(type_crimes).mark_bar().encode(
@@ -80,7 +98,6 @@ def make_charts(type_lst=['Break and Enter Commercial'],
                 )),
         y=alt.Y('contri', axis=alt.Axis(title='Contribution', format='%'),)
     ).properties(
-        title="Constituents on Selected Crimes",
         width=750,
         height=300
     )
@@ -130,33 +147,7 @@ selectors = dbc.Container([
                 ),
                 md=4,
             ),
-            dbc.Col(
-                dcc.Dropdown(
-                    id='year_dropdown',
-                    options=[
-                        {'label': '2003', 'value': '2003'},
-                        {'label': '2004', 'value': '2004'},
-                        {'label': '2005', 'value': '2005'},
-                        {'label': '2006', 'value': '2006'},
-                        {'label': '2007', 'value': '2007'},
-                        {'label': '2008', 'value': '2008'},
-                        {'label': '2009', 'value': '2009'},
-                        {'label': '2010', 'value': '2010'},
-                        {'label': '2011', 'value': '2011'},
-                        {'label': '2012', 'value': '2012'},
-                        {'label': '2013', 'value': '2013'},
-                        {'label': '2014', 'value': '2014'},
-                        {'label': '2015', 'value': '2015'},
-                        {'label': '2016', 'value': '2016'},
-                        {'label': '2017', 'value': '2017'},
-                        {'label': '2018', 'value': '2018'},
-                        {'label': '2019', 'value': '2019'}
-                    ],
-                    value=['2003','2004'],
-                    multi=True,
-                ),
-                md=4,
-            ),
+           
             dbc.Col(
                     dcc.Dropdown(
                         id='crime_type_dropdown',
@@ -177,7 +168,7 @@ selectors = dbc.Container([
                         value=['Break and Enter Commercial','Homicide'],
                         multi=True,
                 ),
-                md=4,
+                md=6,
             )
         ]
     ),
@@ -223,12 +214,12 @@ content = dbc.Container([
 
         dbc.Row([
             dbc.Col([
-                html.H2("Section 1"),
+                html.H2("Crimes In Vancouver"),
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot1',
                         height='560',
-                        width='500',
+                        width='600',
                         style={'border-width': '0'},
                         ################ The magic happens here
                         srcDoc=make_charts()[0].to_html()
@@ -238,7 +229,7 @@ content = dbc.Container([
             ],
             md=6),
             dbc.Col([
-                html.H2("Section 2"),
+                html.H2("Crime Occurrence by Month"),
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot2',
@@ -255,7 +246,7 @@ content = dbc.Container([
 
         dbc.Row([
             dbc.Col([
-                html.H2("Section 3"),
+                html.H2("Crime Occurrence By Time of Day"),
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot3',
@@ -270,7 +261,7 @@ content = dbc.Container([
             ],
             md=6),
             dbc.Col([
-                html.H2("Section 4"),
+                html.H2("Crime Rate"),
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot4',
@@ -286,7 +277,7 @@ content = dbc.Container([
         ]),
         dbc.Row([
             dbc.Col([
-                html.H2("Section 5"),
+                html.H2("Constituents on Selected Crimes"),
                 
                 html.Iframe(
                         sandbox='allow-scripts',
