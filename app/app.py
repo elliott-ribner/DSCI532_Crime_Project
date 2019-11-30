@@ -39,8 +39,8 @@ def make_charts(type_lst=['Break and Enter Commercial'],
         y=alt.Y('Lat:Q', title='Latitude', scale=alt.Scale(domain=[np.min(df.Lat), np.max(df.Lat)])),
         color = 'NEIGHBOURHOOD:N'
     ).properties(
-        width=700,
-        height=400, 
+        width=350,
+        height=300, 
         title = "Crimes In Vancouver"
     ).interactive()
 
@@ -81,7 +81,7 @@ def make_charts(type_lst=['Break and Enter Commercial'],
         y=alt.Y('contri', axis=alt.Axis(title='Contribution', format='%'),)
     ).properties(
         title="Constituents on Selected Crimes",
-        width=350,
+        width=750,
         height=300
     )
 
@@ -101,7 +101,7 @@ jumbotron = dbc.Jumbotron(
                       #width='100px'),
                 html.H1("Vancouver Neighbourhood Crime Rates", className="display-3"),
                 html.P(
-                    "This is an interactive visualization app based on the data provided by the Vancouver Police Department (VPD)",
+                    "This is an interactive visualization based on the data provided by the Vancouver Police Department (VPD)",
                     className="lead",
                 ),
             ],
@@ -181,17 +181,40 @@ selectors = dbc.Container([
             )
         ]
     ),
+    html.Br(),
+    html.Br(),
     dbc.Row([
         dbc.Col([
             dcc.RangeSlider(
-            id='my-range-slider',
+            id='year_slider',
             min=2003,
             max=2019,
             step=1,
-            value=[2003, 2015]
+            value=[2003, 2015],
+            marks={
+                 2003:{'label': '2003'},
+                 2004:{'label': '2004'},
+                 2005:{'label': '2005'},
+                 2006:{'label': '2006'},
+                 2008:{'label': '2007'},
+                 2009:{'label': '2008'},
+                 2007:{'label': '2009'},
+                 2010:{'label': '2010'},
+                 2011:{'label': '2011'},
+                 2012:{'label': '2012'},
+                 2013:{'label': '2013'},
+                 2014:{'label': '2014'},
+                 2015:{'label': '2015'},
+                 2016:{'label': '2016'},
+                 2017:{'label': '2017'},
+                 2018:{'label': '2018'},
+                 2019:{'label': '2019'}
+    },
             )
         ]),
-    ])
+    ]),
+    html.Br(),
+    html.Br(),
 ])
 
 ###
@@ -263,25 +286,26 @@ content = dbc.Container([
         ]),
         dbc.Row([
             dbc.Col([
-                html.H2("Section 1"),
+                html.H2("Section 5"),
                 
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot5',
                         height='560',
-                        width='500',
+                        width='1000',
                         style={'border-width': '0'},
                         ################ The magic happens here
                         srcDoc=make_charts()[4].to_html()
                         ################ The magic happens here
                 )
 
-            ]),
+            ],
+            md=12),
         ]),
     ]
 )
 
-footer = dbc.Container([dbc.Row(dbc.Col(html.P('This Dash app was made collaboratively by Chimaobi, Elliot, Kirk, and Shivam'))),
+footer = dbc.Container([dbc.Row(dbc.Col(html.P('This was made collaboratively by Chimaobi, Elliot, Kirk, and Shivam'))),
          ])
 
 app.layout = html.Div([jumbotron,
@@ -294,11 +318,17 @@ app.layout = html.Div([jumbotron,
     dash.dependencies.Output('plot1', 'srcDoc'),
     [dash.dependencies.Input('crime_type_dropdown', 'value'),
      dash.dependencies.Input('neighbour_dropdown', 'value'),
-     dash.dependencies.Input('year_dropdown', 'value')])
+     dash.dependencies.Input('year_slider', 'value')])
 def update_plot(type_lst, ngbrhd_lst, yr_lst):
     '''
     Takes in an xaxis_column_name and calls make_plot to update our Altair figure
     '''
+    yr_lst_temp = yr_lst
+
+    yr_lst = []
+    for year in range(yr_lst_temp[0],yr_lst_temp[1]+1):
+        yr_lst.append(year)
+
     updated_plot = make_charts(type_lst, ngbrhd_lst, yr_lst)[0].to_html()
     return updated_plot
 
@@ -306,11 +336,16 @@ def update_plot(type_lst, ngbrhd_lst, yr_lst):
     dash.dependencies.Output('plot2', 'srcDoc'),
     [dash.dependencies.Input('crime_type_dropdown', 'value'),
      dash.dependencies.Input('neighbour_dropdown', 'value'),
-     dash.dependencies.Input('year_dropdown', 'value')])
-def update_plot(type_lst, ngbrhd_lst, yr_lst):
+     dash.dependencies.Input('year_slider', 'value')])
+def update_plot2(type_lst, ngbrhd_lst, yr_lst):
     '''
     Takes in an xaxis_column_name and calls make_plot to update our Altair figure
     '''
+    yr_lst_temp = yr_lst
+
+    yr_lst = []
+    for year in range(yr_lst_temp[0],yr_lst_temp[1]+1):
+        yr_lst.append(year)
     updated_plot = make_charts(type_lst, ngbrhd_lst, yr_lst)[1].to_html()
     return updated_plot
 
@@ -318,11 +353,16 @@ def update_plot(type_lst, ngbrhd_lst, yr_lst):
     dash.dependencies.Output('plot3', 'srcDoc'),
     [dash.dependencies.Input('crime_type_dropdown', 'value'),
      dash.dependencies.Input('neighbour_dropdown', 'value'),
-     dash.dependencies.Input('year_dropdown', 'value')])
-def update_plot(type_lst, ngbrhd_lst, yr_lst):
+     dash.dependencies.Input('year_slider', 'value')])
+def update_plot3(type_lst, ngbrhd_lst, yr_lst):
     '''
     Takes in an xaxis_column_name and calls make_plot to update our Altair figure
     '''
+    yr_lst_temp = yr_lst
+
+    yr_lst = []
+    for year in range(yr_lst_temp[0],yr_lst_temp[1]+1):
+        yr_lst.append(year)
     updated_plot = make_charts(type_lst, ngbrhd_lst, yr_lst)[2].to_html()
     return updated_plot
 
@@ -330,11 +370,16 @@ def update_plot(type_lst, ngbrhd_lst, yr_lst):
     dash.dependencies.Output('plot4', 'srcDoc'),
     [dash.dependencies.Input('crime_type_dropdown', 'value'),
      dash.dependencies.Input('neighbour_dropdown', 'value'),
-     dash.dependencies.Input('year_dropdown', 'value')])
-def update_plot(type_lst, ngbrhd_lst, yr_lst):
+     dash.dependencies.Input('year_slider', 'value')])
+def update_plot4(type_lst, ngbrhd_lst, yr_lst):
     '''
     Takes in an xaxis_column_name and calls make_plot to update our Altair figure
     '''
+    yr_lst_temp = yr_lst
+
+    yr_lst = []
+    for year in range(yr_lst_temp[0],yr_lst_temp[1]+1):
+        yr_lst.append(year)
     updated_plot = make_charts(type_lst, ngbrhd_lst, yr_lst)[3].to_html()
     return updated_plot
 
@@ -342,11 +387,16 @@ def update_plot(type_lst, ngbrhd_lst, yr_lst):
     dash.dependencies.Output('plot5', 'srcDoc'),
     [dash.dependencies.Input('crime_type_dropdown', 'value'),
      dash.dependencies.Input('neighbour_dropdown', 'value'),
-     dash.dependencies.Input('year_dropdown', 'value')])
-def update_plot(type_lst, ngbrhd_lst, yr_lst):
+     dash.dependencies.Input('year_slider', 'value')])
+def update_plot5(type_lst, ngbrhd_lst, yr_lst):
     '''
     Takes in an xaxis_column_name and calls make_plot to update our Altair figure
     '''
+    yr_lst_temp = yr_lst
+
+    yr_lst = []
+    for year in range(yr_lst_temp[0],yr_lst_temp[1]+1):
+        yr_lst.append(year)
     updated_plot = make_charts(type_lst, ngbrhd_lst, yr_lst)[4].to_html()
     return updated_plot
 
