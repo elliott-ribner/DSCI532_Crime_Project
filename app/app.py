@@ -140,7 +140,7 @@ def make_charts(type_lst=['Break and Enter Commercial'],
     # ).interactive()
 
     charts[1] = alt.Chart(MOY).mark_bar().encode(
-        x=alt.X('MONTH'),
+        x=alt.X('MONTH:O'),
         y=alt.Y('N', title='Occurrence Count'),
         tooltip=[alt.Tooltip('N:Q', title = 'Occurrences'),
                                     alt.Tooltip('MONTH:Q', title = 'Month')]
@@ -150,7 +150,7 @@ def make_charts(type_lst=['Break and Enter Commercial'],
     )
 
     charts[2] = alt.Chart(TOD).mark_bar().encode(
-        x=alt.X('HOUR'),
+        x=alt.X('HOUR:O'),
         y=alt.Y('N', title='Occurrence Count'),
         tooltip=[alt.Tooltip('N:Q', title = 'Occurrences'),
                                     alt.Tooltip('HOUR:Q', title = 'Hour')]
@@ -160,7 +160,7 @@ def make_charts(type_lst=['Break and Enter Commercial'],
     )
 
     charts[3] = alt.Chart(crime_rate).mark_line().encode(
-        x=alt.X('YEAR:O'),
+        x=alt.X('YEAR:Q'),
         y=alt.Y('rate', title='Crime Occurrences per 1000 People'),
         tooltip=[alt.Tooltip('rate:Q', title = 'Crime Rate'),
                                     alt.Tooltip('YEAR:Q', title = 'Year')]
@@ -252,12 +252,10 @@ selectors = dbc.Container([
                         options=[
                             {'label': 'Break and Enter Commercial', 'value': 'Break and Enter Commercial'},
                             {'label': 'Break and Enter Residential/Other', 'value': 'Break and Enter Residential/Other'},
-                            {'label': 'Homicide', 'value': 'Homicide'},
                             {'label': 'Mischief', 'value': 'Mischief'},
-                            {'label': 'Offence Against a Person', 'value': 'Other Theft'},
                             {'label': 'Theft from Vehicle', 'value': 'Theft from Vehicle'},
                             {'label': 'Theft of Bicycle', 'value': 'Theft of Bicycle'},
-                            {'label': 'Theft of Vehicle', 'value': '2010'},
+                            {'label': 'Theft of Vehicle', 'value': 'Theft of Vehicle'},
                             {'label': 'Vehicle Collision or Pedestrian Struck (with Fatality)', 
                                 'value': 'Vehicle Collision or Pedestrian Struck (with Fatality)'},
                             {'label': 'Vehicle Collision or Pedestrian Struck (with Injury)', 
