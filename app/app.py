@@ -275,7 +275,7 @@ selectors = dbc.Container([
             min=2003,
             max=2018,
             step=1,
-            value=[2003, 2015],
+            value=[2010, 2018],
             marks={
                  2003:{'label': '2003'},
                  2004:{'label': '2004'},
