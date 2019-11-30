@@ -140,34 +140,53 @@ def make_charts(type_lst=['Break and Enter Commercial'],
     # ).interactive()
 
     charts[1] = alt.Chart(MOY).mark_bar().encode(
-        x=alt.X('MONTH'),
+        x=alt.X('MONTH:O'),
         y=alt.Y('N', title='Occurrence Count'),
         tooltip=[alt.Tooltip('N:Q', title = 'Occurrences'),
                                     alt.Tooltip('MONTH:Q', title = 'Month')]
     ).properties(
         width=350,
         height=300
+    ).configure_axisX(
+         titleFontSize=15,
+        labelFontSize=12, 
+        labelAngle = 0
+    ).configure_axisY(
+         titleFontSize=15,
+        labelFontSize=12
     )
 
     charts[2] = alt.Chart(TOD).mark_bar().encode(
-        x=alt.X('HOUR'),
+        x=alt.X('HOUR:O'),
         y=alt.Y('N', title='Occurrence Count'),
         tooltip=[alt.Tooltip('N:Q', title = 'Occurrences'),
                                     alt.Tooltip('HOUR:Q', title = 'Hour')]
     ).properties(
         width=350,
         height=300
+    ).configure_axisX(
+         titleFontSize=15,
+        labelFontSize=12, 
+        labelAngle = 30
+    ).configure_axisY(
+         titleFontSize=15,
+        labelFontSize=12
     )
 
     charts[3] = alt.Chart(crime_rate).mark_line().encode(
-        x=alt.X('YEAR:O'),
+        x=alt.X('YEAR:Q'),
         y=alt.Y('rate', title='Crime Occurrences per 1000 People'),
         tooltip=[alt.Tooltip('rate:Q', title = 'Crime Rate'),
                                     alt.Tooltip('YEAR:Q', title = 'Year')]
     ).properties(
-        width=350,
+        width=400,
         height=300 
-        
+    ).configure_axisX(
+         titleFontSize=15,
+        labelFontSize=12
+    ).configure_axisY(
+         titleFontSize=15,
+        labelFontSize=12
     )
 
     charts[4] = alt.Chart(type_crimes).mark_bar().encode(
@@ -177,10 +196,19 @@ def make_charts(type_lst=['Break and Enter Commercial'],
                     field='contri',
                     order="descending"
                 )),
-        y=alt.Y('contri', axis=alt.Axis(title='Contribution', format='%'),)
+        y=alt.Y('contri', axis=alt.Axis(title='Contribution', format='%')),
+        tooltip=[alt.Tooltip('contri:Q', title = 'Contribution', format='%'),
+                            alt.Tooltip('TYPE:N', title = 'Crime Type')]
     ).properties(
-        width=750,
+        width=500,
         height=300
+    ).configure_axisX(
+         titleFontSize=15,
+        labelFontSize=12, 
+        labelAngle = 45
+    ).configure_axisY(
+         titleFontSize=15,
+        labelFontSize=12
     )
 
     #test_dict = {'TYPE': df.TYPE.unique(), 'NEIGHBOURHOOD': df.NEIGHBOURHOOD.unique(), 'YEAR': df.YEAR.unique()}
@@ -197,7 +225,7 @@ jumbotron = dbc.Jumbotron(
             [
                 #html.Img(src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1920px-Unico_Anello.png', 
                       #width='100px'),
-                html.H1("Vancouver Neighbourhood Crime Rates", className="display-3"),
+                html.H1("Vancouver Crime Tracker", className="display-3"),
                 html.P(
                     "This is an interactive visualization based on the data provided by the Vancouver Police Department (VPD)",
                     className="lead",
@@ -220,7 +248,7 @@ selectors = dbc.Container([
                         {'label': 'Oakridge', 'value': 'Oakridge'},
                         {'label': 'Fairview', 'value': 'Fairview'},
                         {'label': 'West End', 'value': 'West End'},
-                        {'label': 'Central Business District', 'value': 'Central Business District'},
+                        {'label': 'Downtown', 'value': 'Downtown'},
                         {'label': 'Hastings-Sunrise', 'value': 'Hastings-Sunrise'},
                         {'label': 'Strathcona', 'value': 'Strathcona'},
                         {'label': 'Grandview-Woodland', 'value': 'Grandview-Woodland'},
@@ -234,16 +262,16 @@ selectors = dbc.Container([
                         {'label': 'Victoria-Fraserview', 'value': 'Victoria-Fraserview'},                
                         {'label': 'Kerrisdale', 'value': 'Kerrisdale'},                
                         {'label': 'Riley Park', 'value': 'Riley Park'},
-                        {'label': 'Arbutus Ridge', 'value': 'Arbutus Ridge'},
+                        {'label': 'Arbutus-Ridge', 'value': 'Arbutus-Ridge'},
                         {'label': 'Renfrew-Collingwood', 'value': 'Renfrew-Collingwood'},
                         {'label': 'Killarney', 'value': 'Killarney'},
                         {'label': 'Dunbar-Southlands', 'value': 'Dunbar-Southlands'},
                         {'label': 'South Cambie', 'value': 'South Cambie'}
                     ],
-                    value=['Central Business District', 'Fairview'],
+                    value=["Arbutus-Ridge", "Downtown", "Dunbar-Southlands", "Fairview", "Grandview-Woodland", "Hastings-Sunrise", "Kensington-Cedar Cottage", "Kerrisdale", "Killarney", "Kitsilano", "Marpole", "Mount Pleasant", "Oakridge", "Renfrew-Collingwood", "Riley Park", "Shaughnessy", "South Cambie", "Strathcona", "Sunset", "Victoria-Fraserview", "West End", "West Point Grey"],
                     multi=True,
                 ),
-                md=4,
+                md=8,
             ),
            
             dbc.Col(
@@ -252,21 +280,17 @@ selectors = dbc.Container([
                         options=[
                             {'label': 'Break and Enter Commercial', 'value': 'Break and Enter Commercial'},
                             {'label': 'Break and Enter Residential/Other', 'value': 'Break and Enter Residential/Other'},
-                            {'label': 'Homicide', 'value': 'Homicide'},
                             {'label': 'Mischief', 'value': 'Mischief'},
-                            {'label': 'Offence Against a Person', 'value': 'Other Theft'},
                             {'label': 'Theft from Vehicle', 'value': 'Theft from Vehicle'},
                             {'label': 'Theft of Bicycle', 'value': 'Theft of Bicycle'},
-                            {'label': 'Theft of Vehicle', 'value': '2010'},
-                            {'label': 'Vehicle Collision or Pedestrian Struck (with Fatality)', 
-                                'value': 'Vehicle Collision or Pedestrian Struck (with Fatality)'},
-                            {'label': 'Vehicle Collision or Pedestrian Struck (with Injury)', 
-                                'value': 'Vehicle Collision or Pedestrian Struck (with Injury)'}
+                            {'label': 'Theft of Vehicle', 'value': 'Theft of Vehicle'},
+                            {'label': 'Vehicle Collision or Pedestrian Struck', 
+                                'value': 'Vehicle Collision or Pedestrian Struck'}
                         ],
-                        value=['Break and Enter Commercial','Homicide'],
+                        value=['Break and Enter Commercial', 'Break and Enter Residential/Other', 'Mischief', 'Theft from Vehicle', 'Theft of Bicycle', 'Theft of Vehicle', 'Vehicle Collision or Pedestrian Struck'],
                         multi=True,
                 ),
-                md=6,
+                md=4,
             )
         ]
     ),
@@ -277,9 +301,9 @@ selectors = dbc.Container([
             dcc.RangeSlider(
             id='year_slider',
             min=2003,
-            max=2019,
+            max=2018,
             step=1,
-            value=[2003, 2015],
+            value=[2010, 2018],
             marks={
                  2003:{'label': '2003'},
                  2004:{'label': '2004'},
@@ -296,8 +320,7 @@ selectors = dbc.Container([
                  2015:{'label': '2015'},
                  2016:{'label': '2016'},
                  2017:{'label': '2017'},
-                 2018:{'label': '2018'},
-                 2019:{'label': '2019'}
+                 2018:{'label': '2018'}
     },
             )
         ]),
@@ -316,7 +339,7 @@ content = dbc.Container([
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot1',
-                        height='560',
+                        height='400',
                         width='600',
                         style={'border-width': '0'},
                         ################ The magic happens here
@@ -331,7 +354,7 @@ content = dbc.Container([
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot2',
-                        height='560',
+                        height='400',
                         width='500',
                         style={'border-width': '0'},
                         ################ The magic happens here
@@ -348,7 +371,7 @@ content = dbc.Container([
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot3',
-                        height='560',
+                        height='400',
                         width='500',
                         style={'border-width': '0'},
                         ################ The magic happens here
@@ -363,7 +386,7 @@ content = dbc.Container([
                 html.Iframe(
                         sandbox='allow-scripts',
                         id='plot4',
-                        height='560',
+                        height='400',
                         width='500',
                         style={'border-width': '0'},
                         ################ The magic happens here
@@ -374,8 +397,9 @@ content = dbc.Container([
             md=6),
         ]),
         dbc.Row([
+            dbc.Col([],md=2),
             dbc.Col([
-                html.H2("Constituents on Selected Crimes"),
+                html.H2("Constituents of Selected Crimes"),
                 
                 html.Iframe(
                         sandbox='allow-scripts',
@@ -389,7 +413,7 @@ content = dbc.Container([
                 )
 
             ],
-            md=12),
+            md=6),
         ]),
     ]
 )

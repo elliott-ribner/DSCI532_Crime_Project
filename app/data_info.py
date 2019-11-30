@@ -7,7 +7,7 @@ from pyproj import Proj
 
 # Creating Path to read data from the repo
 x = os.getcwd()
-x = x[:len(x)-0]
+x = x[:len(x)-3]
 path=x + "/Data/crimedata_csv_all_years.csv"
 
 # Reading Vancouver City Population from 2001 to 2018
