@@ -25,7 +25,7 @@ def get_gpd_df():
 
 gdf = get_gpd_df()
 # load crime data
-df = pd.read_csv("../Data/crimedata_csv_all_years.csv", encoding = 'latin-1', )
+df = pd.read_csv("./Data/crimedata_csv_all_years.csv", encoding = 'latin-1', )
 df = df[["NEIGHBOURHOOD", "TYPE", 'YEAR','MONTH','HOUR']]
 df['NEIGHBOURHOOD'] = df['NEIGHBOURHOOD'].str.replace("Musqueam", "Marpole",regex = True)
 df['NEIGHBOURHOOD'] = df['NEIGHBOURHOOD'].str.replace("Stanley Park", "West End",regex = True)

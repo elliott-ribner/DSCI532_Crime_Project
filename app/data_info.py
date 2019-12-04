@@ -11,13 +11,11 @@ x = x[:len(x)-3]
 path=x + "/Data/crimedata_csv_all_years.csv"
 
 # Reading Vancouver City Population from 2001 to 2018
-path_pop=x + "/Data/Population_trend.csv"
-pop_yr = pd.read_csv(path_pop)
+pop_yr = pd.read_csv("./Data/Population_trend.csv")
 pop_yr = pop_yr[['YEAR', 'Population']]
 
 # Reading each neighborhood's proportion of population to overall city's population
-path_prop=x + "/Data/population_proportion.csv"
-pop_prop = pd.read_csv(path_prop)
+pop_prop = pd.read_csv("./Data/Population_trend.csv")
 
 def clean_data():
     
@@ -25,7 +23,7 @@ def clean_data():
     alt.data_transformers.disable_max_rows()
 
     #mydata = pd.read_csv('~/MDS/DSCI_532_Group114_SKEC/Data/crimedata_csv_all_years.csv')
-    mydata = pd.read_csv(path)
+    mydata = pd.read_csv("./Data/crimedata_csv_all_years.csv")
     mydata = mydata[~((mydata['X']==0) | (mydata['Y']==0) | (mydata['NEIGHBOURHOOD'].isna()))]
     mydata = mydata.drop(columns=['DAY', 'MINUTE', 'HUNDRED_BLOCK'])
 

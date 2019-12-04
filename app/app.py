@@ -23,20 +23,18 @@ app.title = 'Dash app with pure Altair HTML'
 
 import os as os
 x = os.getcwd()
-x = x[:len(x)-0]
+x = x[:len(x)-1]
+print(x)
 # Reading Vancouver City Population from 2001 to 2018
-path_pop=x + "/Data/Population_trend.csv"
-pop_yr = pd.read_csv(path_pop)
+pop_yr = pd.read_csv("./Data/Population_trend.csv")
 pop_yr = pop_yr[['YEAR', 'Population']]
 # Reading each neighborhood's proportion of population to overall city's population
-path_prop=x + "/Data/population_proportion.csv"
-pop_prop = pd.read_csv(path_prop)
+pop_prop = pd.read_csv("./Data/population_proportion.csv")
 # >>>>    
 
 
-geo_json_file_loc= x + "/Data/local-area-boundary.geojson"
 def open_geojson():
-    with open(geo_json_file_loc) as json_data:
+    with open("./Data/local-area-boundary.geojson") as json_data:
         d = json.load(json_data)
     return d
 
@@ -223,8 +221,6 @@ jumbotron = dbc.Jumbotron(
     [
         dbc.Container(
             [
-                #html.Img(src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1920px-Unico_Anello.png', 
-                      #width='100px'),
                 html.H1("Vancouver Crime Tracker", className="display-3"),
                 html.P(
                     "This is an interactive visualization based on the data provided by the Vancouver Police Department (VPD)",
