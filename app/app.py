@@ -21,10 +21,6 @@ app.config['suppress_callback_exceptions'] = True
 server = app.server
 app.title = 'Dash app with pure Altair HTML'
 
-import os as os
-x = os.getcwd()
-x = x[:len(x)-1]
-print(x)
 # Reading Vancouver City Population from 2001 to 2018
 pop_yr = pd.read_csv("./Data/Population_trend.csv")
 pop_yr = pop_yr[['YEAR', 'Population']]

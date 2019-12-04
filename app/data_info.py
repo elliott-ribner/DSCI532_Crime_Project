@@ -1,14 +1,8 @@
 import numpy as np
 import pandas as pd
 import altair as alt
-import os as os
 # need to pip install pyproj
 from pyproj import Proj
-
-# Creating Path to read data from the repo
-x = os.getcwd()
-x = x[:len(x)-3]
-path=x + "/Data/crimedata_csv_all_years.csv"
 
 # Reading Vancouver City Population from 2001 to 2018
 pop_yr = pd.read_csv("./Data/Population_trend.csv")
