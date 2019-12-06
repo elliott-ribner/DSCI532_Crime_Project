@@ -116,9 +116,10 @@ def make_charts(type_lst=['Break and Enter Commercial'],
 
     choro_data = create_geo_data(gdf2)
     temp_chart = vancouver_map(choro_data, create_geo_data(gdf))
-
     MOY = df.groupby('MONTH')['MONTH'].agg(
         [('N', 'count')]).reset_index().sort_values('MONTH', ascending=True)
+    MOY['MONTH_NAME'] = pd.Series(['January', 'February', 'March', 'April', 'May', 'June',
+                                   'July', 'August', 'September', 'October', 'November', 'December'])
     TOD = df.groupby('HOUR')['HOUR'].agg(
         [('N', 'count')]).reset_index().sort_values('HOUR', ascending=True)
     type_crimes = df.groupby('TYPE')['TYPE'].agg(
@@ -140,7 +141,7 @@ def make_charts(type_lst=['Break and Enter Commercial'],
     charts = {}
     charts[0] = temp_chart
     charts[1] = alt.Chart(MOY).mark_bar().encode(
-        x=alt.X('MONTH:O'),
+        x=alt.X('MONTH_NAME:O', sort=None),
         y=alt.Y('N', title='Occurrence Count'),
         tooltip=[alt.Tooltip('N:Q', title='Occurrences'),
                  alt.Tooltip('MONTH:Q', title='Month')]
@@ -150,7 +151,7 @@ def make_charts(type_lst=['Break and Enter Commercial'],
     ).configure_axisX(
         titleFontSize=15,
         labelFontSize=12,
-        labelAngle=0
+        labelAngle=45
     ).configure_axisY(
         titleFontSize=15,
         labelFontSize=12
@@ -174,7 +175,7 @@ def make_charts(type_lst=['Break and Enter Commercial'],
     )
 
     charts[3] = alt.Chart(crime_rate).mark_line().encode(
-        x=alt.X('YEAR:Q'),
+        x=alt.X('YEAR:O'),
         y=alt.Y('rate', title='Crime Occurrences per 1000 People'),
         tooltip=[alt.Tooltip('rate:Q', title='Crime Rate'),
                  alt.Tooltip('YEAR:Q', title='Year')]
@@ -183,7 +184,8 @@ def make_charts(type_lst=['Break and Enter Commercial'],
         height=300
     ).configure_axisX(
         titleFontSize=15,
-        labelFontSize=12
+        labelFontSize=12,
+        labelAngle=45
     ).configure_axisY(
         titleFontSize=15,
         labelFontSize=12
@@ -217,39 +219,70 @@ jumbotron = dbc.Jumbotron(
     [
         dbc.Container(
             [
-                html.H1("Vancouver Crime Tracker", className="display-3"),
-                html.P(
-                    "This is an interactive visualization based on the data provided by the Vancouver Police Department (VPD)",
-                    className="lead",
-                ),
+                dbc.Row(
+                    [
+                        html.H1("Vancouver Crime Tracker",
+                                className="display-3"),
+                        html.P(
+                            "This is an interactive visualization based on the data provided by the Vancouver Police Department (VPD)",
+                            className="lead",
+                        ),
+                    ]
+                )
             ],
-            fluid=True,
+            fluid=False,
         )
     ],
     fluid=True,
 )
-###
+
+description = dbc.Container(
+    [
+        dbc.Jumbotron(
+            [
+                dbc.Row(
+                    [
+                        html.P(
+                            "Using Data from VPD we have created several plots for residents and visitors of Vancouver to view crime data. There are three selectors, one for neighbourhood, crime type, and year. All three selectors impact each of the plots. The crime rate plot is normalized for population change in Vancouver, other than that the data is non-normalized.",
+                            className="lead",
+                        ),
+                    ]
+                )
+            ],
+            fluid=False,
+        )
+    ],
+    fluid=False,
+)
+
+
 selectors = dbc.Container([
 
     dbc.Row(
         [
             dbc.Col(
-                dcc.Dropdown(
-                    id='neighbour_dropdown',
-                    options=neighbourhood_options,
-                    value=neighbourhood_default,
-                    multi=True,
-                ),
+                [
+                    html.H3('Neighbourhoods'),
+                    dcc.Dropdown(
+                        id='neighbour_dropdown',
+                        options=neighbourhood_options,
+                        value=neighbourhood_default,
+                        multi=True,
+                    )
+                ],
                 md=8,
             ),
 
             dbc.Col(
-                dcc.Dropdown(
-                    id='crime_type_dropdown',
-                    options=crime_type_options,
-                    value=crime_type_default,
-                    multi=True,
-                ),
+                [
+                    html.H3('Crime Types'),
+                    dcc.Dropdown(
+                        id='crime_type_dropdown',
+                        options=crime_type_options,
+                        value=crime_type_default,
+                        multi=True,
+                    )
+                ],
                 md=4,
             )
         ]
@@ -373,6 +406,7 @@ footer = dbc.Container([dbc.Row(dbc.Col(html.P('This was made collaboratively by
 
 app.layout = html.Div([jumbotron,
                        selectors,
+                       description,
                        content,
                        footer])
 
