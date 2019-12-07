@@ -97,11 +97,11 @@ gdf = get_gpd_df()
 gdf['NEIGHBOURHOOD'] = gdf['name']
 neighbourhood_options = list(
     map(lambda n: {"label": n, "value": n}, gdf['NEIGHBOURHOOD'].tolist()))
-neighbourhood_default = gdf['NEIGHBOURHOOD'].tolist()[:19]
+neighbourhood_default = gdf['NEIGHBOURHOOD'].tolist()
 gdf = gdf.drop(columns="name")
 crime_type_options = list(
     map(lambda n: {"label": n, "value": n}, mydata.TYPE.unique()))
-crime_type_default = list(mydata.TYPE.unique())[:7]
+crime_type_default = list(mydata.TYPE.unique())
 
 
 def make_charts(type_lst=['Break and Enter Commercial'],
